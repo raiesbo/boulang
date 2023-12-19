@@ -1,3 +1,3 @@
-### BouLang
+# BouLang
 
-BouLang language interpretor writter in Go.
+Bou programing language interpretor writter in Go.
