@@ -1,21 +1,19 @@
-name: Go
+name: CI
 
 on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        go-version: [ '1.19', '1.20', '1.21.x' ]
-
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Go ${{ matrix.go-version }}
+      - name: Setup Go 
         uses: actions/setup-go@v4
         with:
-          go-version: ${{ matrix.go-version }}
-      # You can test your matrix by printing the current Go version
-      - name: Display Go version
-        run: go version
+          go-version: "1.21.5"
+      - name: Install dependencies
+        run: go get .
+      - name: Build
+        run: go build -v ./...
+      - name: Test with the Go CLI
+        run: go test ./...
