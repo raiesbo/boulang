@@ -2,6 +2,7 @@ package lexer
 
 import (
 	"boulang/token"
+	"fmt"
 	"testing"
 )
 
@@ -30,13 +31,14 @@ let result = add(five, ten);
 		{token.ASSIGN, "="},
 		{token.INT, "10"},
 		{token.SEMICOLON, ";"},
+		{token.LET, "let"},
 		{token.IDENT, "add"},
 		{token.ASSIGN, "="},
 		{token.FUNCTION, "fn"},
 		{token.LPAREN, "("},
 		{token.IDENT, "x"},
 		{token.COMMA, ","},
-		{token.IDENT, "x"},
+		{token.IDENT, "y"},
 		{token.RPAREN, ")"},
 		{token.LBRACE, "{"},
 		{token.IDENT, "x"},
@@ -44,6 +46,7 @@ let result = add(five, ten);
 		{token.IDENT, "y"},
 		{token.SEMICOLON, ";"},
 		{token.RBRACE, "}"},
+		{token.SEMICOLON, ";"},
 		{token.LET, "let"},
 		{token.IDENT, "result"},
 		{token.ASSIGN, "="},
@@ -63,6 +66,7 @@ let result = add(five, ten);
 		tok := l.NextToken()
 
 		if tok.Type != test.expectedType {
+			fmt.Println(tok)
 			t.Fatalf("tests[%d] - typeToken wrong. expected=%q, got=%q", i, test.expectedType, tok.Type)
 		}
 
