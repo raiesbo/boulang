@@ -12,7 +12,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("Hello %s! This is the Bou programming language!\n", user.Username)
-	fmt.Printf("Feel free to type in commands\n")
+	fmt.Printf("Hello %s! Welcome to Boulang v0.0.1.\n", user.Username)
+	fmt.Printf("Feel free to type in commands.\n")
 	repl.Start(os.Stdin, os.Stdout)
 }
